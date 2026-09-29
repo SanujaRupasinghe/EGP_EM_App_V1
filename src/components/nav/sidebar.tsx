@@ -33,7 +33,7 @@ export function Sidebar({ isAdmin, userName }: { isAdmin: boolean; userName: str
   ];
 
   return (
-    <aside className="hidden w-60 shrink-0 flex-col border-r border-slate-200 bg-white md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col border-r border-slate-200 bg-white md:flex">
       <div className="flex items-center gap-2 border-b border-slate-100 px-5 py-4">
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-700 text-white">
           <Sprout className="h-5 w-5" />
@@ -44,7 +44,7 @@ export function Sidebar({ isAdmin, userName }: { isAdmin: boolean; userName: str
         </div>
       </div>
 
-      <nav className="flex-1 space-y-0.5 px-3 py-4">
+      <nav className="flex-1 space-y-0.5 overflow-y-auto px-3 py-4">
         {items.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(`${href}/`);
           return (

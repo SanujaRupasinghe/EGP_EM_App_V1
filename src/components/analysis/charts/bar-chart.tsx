@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export type BarDatum = { label: string; value: number };
+
+function formatAxisValue(v: number): string {
+  if (v >= 1000) return `${(v / 1000).toFixed(v % 1000 === 0 ? 0 : 1)}k`;
+  return Number.isInteger(v) ? String(v) : v.toFixed(1);
+}
 
 export function BarChart({
   data,
@@ -21,6 +26,7 @@ export function BarChart({
   showTable?: boolean;
 }) {
   const [hovered, setHovered] = useState<number | null>(null);
+  const gradientId = useId();
 
   if (data.length === 0) {
     return <p className="py-6 text-center text-sm text-slate-400">{emptyLabel}</p>;
@@ -33,32 +39,61 @@ export function BarChart({
   const barWidth = 28;
   const gap = 20;
   const plotHeight = 160;
-  const topGutter = 20;
+  const topGutter = 24;
   const labelGutter = 52;
-  const chartWidth = Math.max(data.length * (barWidth + gap), 320);
+  const leftGutter = 34;
+  const chartWidth = leftGutter + Math.max(data.length * (barWidth + gap), 300);
   const chartHeight = topGutter + plotHeight + labelGutter;
+  const gridSteps = 4;
 
   return (
     <div className="space-y-2">
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-lg bg-slate-50/60 px-1 py-2">
         <svg
           role="img"
           aria-label="Bar chart"
           width={chartWidth}
           height={chartHeight}
         >
-          <line
-            x1={0}
-            y1={topGutter + plotHeight}
-            x2={chartWidth}
-            y2={topGutter + plotHeight}
-            stroke="#e2e8f0"
-            strokeWidth={1}
-          />
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#047857" />
+            </linearGradient>
+          </defs>
+
+          {Array.from({ length: gridSteps + 1 }).map((_, i) => {
+            const frac = i / gridSteps;
+            const y = topGutter + plotHeight * (1 - frac);
+            const value = max * frac;
+            return (
+              <g key={i}>
+                <line
+                  x1={leftGutter}
+                  y1={y}
+                  x2={chartWidth}
+                  y2={y}
+                  stroke={i === 0 ? "#cbd5e1" : "#e2e8f0"}
+                  strokeWidth={1}
+                  strokeDasharray={i === 0 ? undefined : "3 3"}
+                />
+                <text
+                  x={leftGutter - 8}
+                  y={y + 3}
+                  textAnchor="end"
+                  className="fill-slate-400"
+                  style={{ fontSize: 9 }}
+                >
+                  {formatAxisValue(value)}
+                </text>
+              </g>
+            );
+          })}
+
           {data.map((d, i) => {
-            const w = Math.max(2, (d.value / max) * (plotHeight - 4));
-            const x = i * (barWidth + gap) + gap / 2;
-            const y = topGutter + plotHeight - w;
+            const h = Math.max(2, (d.value / max) * plotHeight);
+            const x = leftGutter + i * (barWidth + gap) + gap / 2;
+            const y = topGutter + plotHeight - h;
             const isHovered = hovered === i;
             const labelX = x + barWidth / 2;
             const labelY = topGutter + plotHeight + 14;
@@ -73,21 +108,28 @@ export function BarChart({
                 style={{ cursor: "pointer", outline: "none" }}
               >
                 <title>{`${d.label}: ${formatValue(d.value)}${valueSuffix}`}</title>
-                <rect x={x} y={topGutter} width={barWidth} height={plotHeight} fill="transparent" />
+                <rect
+                  x={x - gap / 2}
+                  y={topGutter}
+                  width={barWidth + gap}
+                  height={plotHeight}
+                  rx={4}
+                  fill={isHovered ? "#0f766e0d" : "transparent"}
+                />
                 <rect
                   x={x}
                   y={y}
                   width={barWidth}
-                  height={w}
-                  rx={4}
-                  fill={isHovered ? "#047857" : "#059669"}
+                  height={h}
+                  rx={5}
+                  fill={isHovered ? "#065f46" : `url(#${gradientId})`}
                 />
                 <text
                   x={labelX}
-                  y={Math.max(12, y - 6)}
+                  y={Math.max(14, y - 6)}
                   textAnchor="middle"
                   className="fill-slate-900"
-                  style={{ fontSize: 10, fontWeight: 600 }}
+                  style={{ fontSize: 10, fontWeight: 700 }}
                 >
                   {formatValue(d.value)}
                   {valueSuffix}
@@ -96,8 +138,8 @@ export function BarChart({
                   x={labelX}
                   y={labelY}
                   textAnchor="end"
-                  className="fill-slate-600"
-                  style={{ fontSize: 10 }}
+                  className={isHovered ? "fill-slate-800" : "fill-slate-600"}
+                  style={{ fontSize: 10, fontWeight: isHovered ? 700 : 400 }}
                   transform={`rotate(-40 ${labelX} ${labelY})`}
                 >
                   {d.label.length > 20 ? `${d.label.slice(0, 19)}…` : d.label}
