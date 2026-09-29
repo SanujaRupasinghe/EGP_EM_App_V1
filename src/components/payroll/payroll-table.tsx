@@ -18,16 +18,24 @@ export type PayrollRow = {
   teaKg: number;
   allowance: number;
   loan: number;
+  /** report_date -> that day's total pay, for the per-date breakdown columns. */
+  dailyPay: Record<string, number>;
 };
+
+function dayLabel(date: string): string {
+  return String(new Date(`${date}T00:00:00`).getDate());
+}
 
 export function PayrollTable({
   rows: initialRows,
+  dates,
   periodStart,
   periodEnd,
   monthLabel,
   periodPage,
 }: {
   rows: PayrollRow[];
+  dates: string[];
   periodStart: string;
   periodEnd: string;
   monthLabel: string;
@@ -79,7 +87,7 @@ export function PayrollTable({
             code: r.code,
             name: r.name,
             days: r.days,
-            gross: r.gross,
+            ...Object.fromEntries(dates.map((d) => [d, (r.dailyPay[d] ?? 0).toFixed(2)])),
             advances: r.advances,
             allowance: r.allowance,
             loan: r.loan,
@@ -99,9 +107,13 @@ export function PayrollTable({
         <table className="w-full min-w-[640px] text-left text-sm">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50 text-xs text-slate-500">
-              <th className="px-2 py-2">Employee</th>
-              <th className="px-2 py-2">Days</th>
-              <th className="px-2 py-2">Amount</th>
+              <th className="sticky left-0 z-10 bg-slate-50 px-2 py-2">Employee</th>
+              <th className="px-2 py-2"># days</th>
+              {dates.map((d) => (
+                <th key={d} title={d} className="px-2 py-2 text-right">
+                  {dayLabel(d)}
+                </th>
+              ))}
               <th className="px-2 py-2">Advances</th>
               <th className="px-2 py-2">Allowance</th>
               <th className="px-2 py-2">Loan</th>
@@ -111,11 +123,15 @@ export function PayrollTable({
           <tbody>
             {balances.map((r) => (
               <tr key={r.employeeId} className="border-b border-slate-100">
-                <td className="px-2 py-2 whitespace-nowrap">
+                <td className="sticky left-0 z-10 whitespace-nowrap bg-white px-2 py-2">
                   {r.code} — {r.name}
                 </td>
                 <td className="px-2 py-2">{r.days}</td>
-                <td className="px-2 py-2">{formatLKR(r.gross)}</td>
+                {dates.map((d) => (
+                  <td key={d} className="px-2 py-2 text-right whitespace-nowrap">
+                    {r.dailyPay[d] ? formatLKR(r.dailyPay[d]) : "—"}
+                  </td>
+                ))}
                 <td className="px-2 py-2">{formatLKR(r.advances)}</td>
                 <td className="px-2 py-2">
                   <Input
@@ -142,7 +158,7 @@ export function PayrollTable({
             ))}
             {balances.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-2 py-4 text-center text-slate-400">
+                <td colSpan={6 + dates.length} className="px-2 py-4 text-center text-slate-400">
                   No one worked in this period yet.
                 </td>
               </tr>
@@ -151,9 +167,13 @@ export function PayrollTable({
           {balances.length > 0 && (
             <tfoot>
               <tr className="border-t border-slate-200 bg-slate-50 font-medium">
-                <td className="px-2 py-2">Total</td>
+                <td className="sticky left-0 z-10 bg-slate-50 px-2 py-2">Total</td>
                 <td className="px-2 py-2"></td>
-                <td className="px-2 py-2">{formatLKR(totals.gross)}</td>
+                {dates.map((d) => (
+                  <td key={d} className="px-2 py-2 text-right">
+                    {formatLKR(balances.reduce((sum, r) => sum + (r.dailyPay[d] ?? 0), 0))}
+                  </td>
+                ))}
                 <td className="px-2 py-2">{formatLKR(totals.advances)}</td>
                 <td className="px-2 py-2">{formatLKR(totals.allowance)}</td>
                 <td className="px-2 py-2">{formatLKR(totals.loan)}</td>
