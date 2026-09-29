@@ -17,7 +17,11 @@ export function DatePickerNav({ date, max }: { date: string; max: string }) {
 
   function goTo(next: string) {
     if (next > max) return;
+    // router.push alone can serve a stale client-cached snapshot of the
+    // target date (e.g. if you visited it earlier in the session before
+    // more data was entered) — refresh forces a fresh server fetch.
     router.push(`${pathname}?date=${next}`);
+    router.refresh();
   }
 
   return (
