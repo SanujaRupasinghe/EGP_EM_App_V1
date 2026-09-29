@@ -1,0 +1,415 @@
+report_date,employee_code,time_preset_label,advance_amount,section_code,work_type_code,quantity_kg
+2026-09-01,f1,"Half day, late start (10:30–1:30)",0,1D,Tea_Fertilizing,23.9
+2026-09-01,f13,"Half day, early finish (7:30–10:30)",150,1D,Tea_Weeding,
+2026-09-01,f13,"Half day, early finish (7:30–10:30)",150,1D,Tea_Weeding,
+2026-09-01,f20,Long day (7:30–4:30),0,2C3,Tea_Plucking,22
+2026-09-01,f26,Long day (7:30–4:30),0,2A1,Tea_Plucking,16.7
+2026-09-01,f27,Long day (7:30–4:30),0,3A1,Tea_Fertilizing,15.9
+2026-09-01,f28,Full day (7:30–1:30),0,2A1,Tea_Fertilizing,23.9
+2026-09-01,f29,Long day (7:30–4:30),250,1C1,Tea_Plucking,20.1
+2026-09-01,f3,"Half day, late start (10:30–1:30)",0,2C3,Tea_Fertilizing,21.1
+2026-09-01,f31,Long day (7:30–4:30),0,1B2,Tea_Plucking,19.1
+2026-09-01,f4,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Plucking,19.9
+2026-09-01,f6,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Fertilizing,20.5
+2026-09-01,f8,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Plucking,21.7
+2026-09-01,m1,"Half day, late start (10:30–1:30)",100,1C1,Tea_Fertilizing,18.6
+2026-09-01,m3,Full day (7:30–1:30),0,1B3,Tea_Weeding,
+2026-09-01,m6,"Half day, early finish (7:30–10:30)",0,1D,Tea_Weeding,
+2026-09-02,f1,Long day (7:30–4:30),0,2C3,Tea_Plucking,25.9
+2026-09-02,f13,Long day (7:30–4:30),0,3A1,Tea_Fertilizing,23.9
+2026-09-02,f13,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-02,f20,"Half day, late start (10:30–1:30)",0,2A1,Tea_Fertilizing,25.2
+2026-09-02,f26,Long day (7:30–4:30),0,2A1,Tea_Plucking,22.4
+2026-09-02,f27,Long day (7:30–4:30),0,2A1,Tea_Plucking,22.6
+2026-09-02,f28,Long day (7:30–4:30),0,1D,Tea_Fertilizing,25.1
+2026-09-02,f28,Long day (7:30–4:30),0,1B2,Tea_Weeding,
+2026-09-02,f29,"Half day, early finish (7:30–10:30)",300,2C3,Tea_Fertilizing,25
+2026-09-02,f29,"Half day, early finish (7:30–10:30)",300,1B3,Tea_Weeding,
+2026-09-02,f3,"Half day, late start (10:30–1:30)",0,2C3,Tea_Weeding,
+2026-09-02,f3,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-02,f31,"Half day, early finish (7:30–10:30)",150,3A1,Tea_Plucking,22
+2026-09-02,f31,"Half day, early finish (7:30–10:30)",150,1B2,Tea_Weeding,
+2026-09-02,f4,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-02,f6,Long day (7:30–4:30),0,2A1,Tea_Plucking,15.7
+2026-09-02,f6,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-02,f8,"Half day, early finish (7:30–10:30)",0,1D,Tea_Fertilizing,25.7
+2026-09-02,m1,Full day (7:30–1:30),200,1D,Tea_Plucking,15.1
+2026-09-02,m3,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Plucking,19.2
+2026-09-02,m6,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Weeding,
+2026-09-03,f1,"Half day, late start (10:30–1:30)",0,3A1,Tea_Fertilizing,22.8
+2026-09-03,f13,Full day (7:30–1:30),100,1C1,Tea_Plucking,17.5
+2026-09-03,f20,Full day (7:30–1:30),0,1B2,Tea_Plucking,24.3
+2026-09-03,f26,Long day (7:30–4:30),0,3A1,Tea_Weeding,
+2026-09-03,f27,"Half day, late start (10:30–1:30)",0,1D,Tea_Fertilizing,22.3
+2026-09-03,f28,"Half day, late start (10:30–1:30)",0,1D,Tea_Plucking,16.4
+2026-09-03,f29,Full day (7:30–1:30),0,1D,Tea_Plucking,17.8
+2026-09-03,f3,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-03,f3,"Half day, late start (10:30–1:30)",0,2C3,Tea_Weeding,
+2026-09-03,f31,Full day (7:30–1:30),0,1B2,Tea_Fertilizing,25.2
+2026-09-03,f4,Full day (7:30–1:30),0,3A1,Tea_Plucking,23.6
+2026-09-03,f6,Long day (7:30–4:30),0,1B3,Tea_Plucking,16.9
+2026-09-03,f8,Full day (7:30–1:30),0,2A1,Tea_Fertilizing,25.4
+2026-09-03,m1,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Fertilizing,17.8
+2026-09-03,m3,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Weeding,
+2026-09-03,m3,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-03,m6,Full day (7:30–1:30),0,1C1,Tea_Fertilizing,16.9
+2026-09-04,f1,Full day (7:30–1:30),0,1B2,Tea_Fertilizing,17.6
+2026-09-04,f13,"Half day, late start (10:30–1:30)",250,1D,Tea_Fertilizing,15.5
+2026-09-04,f20,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,16.8
+2026-09-04,f20,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Weeding,
+2026-09-04,f26,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-04,f27,"Half day, late start (10:30–1:30)",0,1D,Tea_Fertilizing,17.5
+2026-09-04,f28,"Half day, late start (10:30–1:30)",0,2A1,Tea_Fertilizing,17.9
+2026-09-04,f29,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-04,f29,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-04,f3,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-04,f31,Long day (7:30–4:30),0,1D,Tea_Plucking,20.3
+2026-09-04,f31,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-04,f4,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,26.2
+2026-09-04,f6,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-04,f6,Long day (7:30–4:30),0,1D,Tea_Weeding,
+2026-09-04,f8,Full day (7:30–1:30),100,1C1,Tea_Plucking,19.2
+2026-09-04,m1,"Half day, late start (10:30–1:30)",0,1B2,Tea_Weeding,
+2026-09-04,m1,"Half day, late start (10:30–1:30)",0,2A1,Tea_Weeding,
+2026-09-04,m3,"Half day, late start (10:30–1:30)",0,2C3,Tea_Weeding,
+2026-09-04,m3,"Half day, late start (10:30–1:30)",0,1D,Tea_Weeding,
+2026-09-04,m6,Long day (7:30–4:30),0,1C1,Tea_Fertilizing,16.6
+2026-09-07,f1,Full day (7:30–1:30),0,2C3,Tea_Fertilizing,21.1
+2026-09-07,f13,Long day (7:30–4:30),0,1D,Tea_Plucking,23.9
+2026-09-07,f20,Long day (7:30–4:30),0,2A1,Tea_Fertilizing,15.6
+2026-09-07,f26,Full day (7:30–1:30),0,3A1,Tea_Plucking,25.9
+2026-09-07,f27,Full day (7:30–1:30),0,2A1,Tea_Plucking,26.6
+2026-09-07,f28,Long day (7:30–4:30),0,1B3,Tea_Plucking,25.9
+2026-09-07,f29,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Fertilizing,21.1
+2026-09-07,f3,Long day (7:30–4:30),0,1C1,Tea_Fertilizing,20.4
+2026-09-07,f31,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-07,f4,Long day (7:30–4:30),0,2A1,Tea_Fertilizing,21.2
+2026-09-07,f6,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-07,f8,Full day (7:30–1:30),0,2C3,Tea_Plucking,16.7
+2026-09-07,m1,"Half day, late start (10:30–1:30)",0,1D,Tea_Plucking,25.5
+2026-09-07,m3,Long day (7:30–4:30),250,1B3,Tea_Fertilizing,21.3
+2026-09-07,m6,"Half day, late start (10:30–1:30)",150,1B3,Tea_Weeding,
+2026-09-07,m6,"Half day, late start (10:30–1:30)",150,2A1,Tea_Weeding,
+2026-09-08,f1,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,20.7
+2026-09-08,f13,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,21.2
+2026-09-08,f13,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-08,f20,Long day (7:30–4:30),150,2A1,Tea_Plucking,17.1
+2026-09-08,f26,Full day (7:30–1:30),100,2C3,Tea_Fertilizing,21.2
+2026-09-08,f27,Full day (7:30–1:30),0,1D,Tea_Fertilizing,24.3
+2026-09-08,f28,"Half day, late start (10:30–1:30)",0,2A1,Tea_Fertilizing,15.8
+2026-09-08,f29,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-08,f29,Full day (7:30–1:30),0,1C1,Tea_Weeding,
+2026-09-08,f3,Full day (7:30–1:30),0,3A1,Tea_Plucking,16.1
+2026-09-08,f31,Long day (7:30–4:30),0,3A1,Tea_Plucking,23.2
+2026-09-08,f4,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-08,f6,Long day (7:30–4:30),0,3A1,Tea_Weeding,
+2026-09-08,f8,Full day (7:30–1:30),150,1D,Tea_Fertilizing,27
+2026-09-08,m1,Full day (7:30–1:30),150,1B2,Tea_Weeding,
+2026-09-08,m3,"Half day, late start (10:30–1:30)",300,1B2,Tea_Weeding,
+2026-09-08,m6,"Half day, early finish (7:30–10:30)",150,1C1,Tea_Fertilizing,17.1
+2026-09-09,f1,Full day (7:30–1:30),0,2A1,Tea_Fertilizing,26.6
+2026-09-09,f13,"Half day, late start (10:30–1:30)",0,3A1,Tea_Fertilizing,23.8
+2026-09-09,f13,"Half day, late start (10:30–1:30)",0,1D,Tea_Weeding,
+2026-09-09,f20,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Plucking,16.2
+2026-09-09,f20,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Weeding,
+2026-09-09,f26,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Plucking,19.4
+2026-09-09,f27,"Half day, early finish (7:30–10:30)",300,1B3,Tea_Weeding,
+2026-09-09,f28,Full day (7:30–1:30),0,2A1,Tea_Plucking,18
+2026-09-09,f29,Full day (7:30–1:30),0,1B2,Tea_Weeding,
+2026-09-09,f3,Full day (7:30–1:30),0,1B2,Tea_Plucking,24.2
+2026-09-09,f31,Full day (7:30–1:30),0,2A1,Tea_Fertilizing,23
+2026-09-09,f4,Full day (7:30–1:30),150,2C3,Tea_Plucking,16.5
+2026-09-09,f6,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,19.7
+2026-09-09,f8,"Half day, late start (10:30–1:30)",0,2C3,Tea_Plucking,24.8
+2026-09-09,m1,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Fertilizing,25.6
+2026-09-09,m1,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Weeding,
+2026-09-09,m3,Long day (7:30–4:30),0,2C3,Tea_Plucking,17.7
+2026-09-09,m6,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-10,f1,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Fertilizing,18.8
+2026-09-10,f1,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-10,f13,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Fertilizing,23.7
+2026-09-10,f13,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-10,f20,"Half day, late start (10:30–1:30)",0,1D,Tea_Fertilizing,20.6
+2026-09-10,f26,"Half day, late start (10:30–1:30)",0,1B3,Tea_Weeding,
+2026-09-10,f27,Long day (7:30–4:30),0,1D,Tea_Fertilizing,22.3
+2026-09-10,f28,Full day (7:30–1:30),0,1D,Tea_Plucking,21
+2026-09-10,f28,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-10,f29,"Half day, late start (10:30–1:30)",0,2C3,Tea_Fertilizing,18.8
+2026-09-10,f3,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,19.7
+2026-09-10,f31,"Half day, early finish (7:30–10:30)",0,1D,Tea_Fertilizing,17.5
+2026-09-10,f31,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-10,f4,"Half day, late start (10:30–1:30)",0,1C1,Tea_Plucking,16.4
+2026-09-10,f4,"Half day, late start (10:30–1:30)",0,1B2,Tea_Weeding,
+2026-09-10,f6,Long day (7:30–4:30),150,2A1,Tea_Plucking,24
+2026-09-10,f8,Full day (7:30–1:30),0,1B3,Tea_Fertilizing,22.5
+2026-09-10,m1,"Half day, late start (10:30–1:30)",0,2A1,Tea_Weeding,
+2026-09-10,m3,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-10,m3,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-10,m6,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-11,f1,Full day (7:30–1:30),0,1B3,Tea_Fertilizing,15.7
+2026-09-11,f1,Full day (7:30–1:30),0,1B2,Tea_Weeding,
+2026-09-11,f13,Full day (7:30–1:30),0,1C1,Tea_Weeding,
+2026-09-11,f20,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,16.4
+2026-09-11,f26,Full day (7:30–1:30),250,2A1,Tea_Plucking,16.3
+2026-09-11,f27,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Plucking,25.1
+2026-09-11,f27,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Weeding,
+2026-09-11,f28,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-11,f29,"Half day, late start (10:30–1:30)",0,2A1,Tea_Fertilizing,18.9
+2026-09-11,f3,Long day (7:30–4:30),0,1B2,Tea_Plucking,16.4
+2026-09-11,f31,"Half day, late start (10:30–1:30)",0,1B2,Tea_Plucking,15.9
+2026-09-11,f31,"Half day, late start (10:30–1:30)",0,2A1,Tea_Weeding,
+2026-09-11,f4,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Plucking,21.9
+2026-09-11,f6,Full day (7:30–1:30),0,1C1,Tea_Weeding,
+2026-09-11,f6,Full day (7:30–1:30),0,1B2,Tea_Weeding,
+2026-09-11,f8,"Half day, late start (10:30–1:30)",0,3A1,Tea_Plucking,18.2
+2026-09-11,f8,"Half day, late start (10:30–1:30)",0,1C1,Tea_Weeding,
+2026-09-11,m1,"Half day, early finish (7:30–10:30)",0,1D,Tea_Fertilizing,17.6
+2026-09-11,m3,Long day (7:30–4:30),0,3A1,Tea_Fertilizing,26.9
+2026-09-11,m6,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Fertilizing,26.8
+2026-09-12,f1,"Half day, early finish (7:30–10:30)",300,2A1,Tea_Fertilizing,18.7
+2026-09-12,f13,"Half day, late start (10:30–1:30)",0,1B2,Tea_Fertilizing,19.6
+2026-09-12,f20,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Fertilizing,24.2
+2026-09-12,f26,"Half day, early finish (7:30–10:30)",200,1C1,Tea_Plucking,23.7
+2026-09-12,f27,"Half day, early finish (7:30–10:30)",100,1C1,Tea_Weeding,
+2026-09-12,f28,Full day (7:30–1:30),0,2C3,Tea_Weeding,
+2026-09-12,f29,Full day (7:30–1:30),100,2C3,Tea_Plucking,21.3
+2026-09-12,f3,Long day (7:30–4:30),0,1D,Tea_Plucking,18
+2026-09-12,f31,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Weeding,
+2026-09-12,f4,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Plucking,26.6
+2026-09-12,f6,Long day (7:30–4:30),0,3A1,Tea_Plucking,17.4
+2026-09-12,f6,Long day (7:30–4:30),0,1B3,Tea_Weeding,
+2026-09-12,f8,Long day (7:30–4:30),0,1B3,Tea_Fertilizing,25.6
+2026-09-12,m1,Full day (7:30–1:30),0,2C3,Tea_Weeding,
+2026-09-12,m3,"Half day, late start (10:30–1:30)",0,1B2,Tea_Weeding,
+2026-09-12,m6,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Fertilizing,17.7
+2026-09-12,m6,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-14,f1,Long day (7:30–4:30),0,1B2,Tea_Weeding,
+2026-09-14,f13,Long day (7:30–4:30),0,1B3,Tea_Fertilizing,23.7
+2026-09-14,f20,Long day (7:30–4:30),200,1B3,Tea_Fertilizing,17.3
+2026-09-14,f26,Full day (7:30–1:30),200,1C1,Tea_Fertilizing,24.3
+2026-09-14,f26,Full day (7:30–1:30),200,1B3,Tea_Weeding,
+2026-09-14,f27,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-14,f28,Full day (7:30–1:30),0,1B2,Tea_Fertilizing,25.8
+2026-09-14,f29,Long day (7:30–4:30),0,1C1,Tea_Fertilizing,19
+2026-09-14,f29,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-14,f3,Long day (7:30–4:30),300,1B3,Tea_Weeding,
+2026-09-14,f31,"Half day, late start (10:30–1:30)",0,2A1,Tea_Plucking,21.5
+2026-09-14,f31,"Half day, late start (10:30–1:30)",0,2A1,Tea_Weeding,
+2026-09-14,f4,Long day (7:30–4:30),0,2A1,Tea_Plucking,23.6
+2026-09-14,f6,Long day (7:30–4:30),0,2A1,Tea_Fertilizing,21.2
+2026-09-14,f8,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-14,m1,"Half day, late start (10:30–1:30)",0,1B3,Tea_Weeding,
+2026-09-14,m3,Full day (7:30–1:30),0,1D,Tea_Fertilizing,25.8
+2026-09-14,m6,Full day (7:30–1:30),250,1B3,Tea_Plucking,22.5
+2026-09-16,f1,Full day (7:30–1:30),150,2A1,Tea_Fertilizing,21.2
+2026-09-16,f13,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,20
+2026-09-16,f20,"Half day, late start (10:30–1:30)",150,2C3,Tea_Plucking,15.5
+2026-09-16,f26,Full day (7:30–1:30),0,1C1,Tea_Plucking,15.4
+2026-09-16,f27,"Half day, late start (10:30–1:30)",0,1B2,Tea_Plucking,16.8
+2026-09-16,f27,"Half day, late start (10:30–1:30)",0,1C1,Tea_Weeding,
+2026-09-16,f28,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,21.2
+2026-09-16,f29,Full day (7:30–1:30),0,1D,Tea_Weeding,
+2026-09-16,f29,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-16,f3,Long day (7:30–4:30),0,2C3,Tea_Plucking,23.4
+2026-09-16,f31,Full day (7:30–1:30),250,3A1,Tea_Plucking,16.5
+2026-09-16,f4,Long day (7:30–4:30),300,1C1,Tea_Fertilizing,25.5
+2026-09-16,f6,"Half day, early finish (7:30–10:30)",200,1C1,Tea_Fertilizing,19.4
+2026-09-16,f8,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-16,m1,"Half day, late start (10:30–1:30)",250,1B2,Tea_Weeding,
+2026-09-16,m3,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-16,m6,"Half day, late start (10:30–1:30)",0,1C1,Tea_Fertilizing,26.4
+2026-09-17,f1,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-17,f13,Long day (7:30–4:30),0,2A1,Tea_Fertilizing,20.5
+2026-09-17,f20,"Half day, late start (10:30–1:30)",0,2A1,Tea_Plucking,21.6
+2026-09-17,f26,Long day (7:30–4:30),0,1B2,Tea_Fertilizing,16.9
+2026-09-17,f27,"Half day, late start (10:30–1:30)",0,2A1,Tea_Plucking,18.7
+2026-09-17,f27,"Half day, late start (10:30–1:30)",0,1C1,Tea_Weeding,
+2026-09-17,f28,Full day (7:30–1:30),0,3A1,Tea_Plucking,17.1
+2026-09-17,f28,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-17,f29,Full day (7:30–1:30),0,1B2,Tea_Weeding,
+2026-09-17,f3,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-17,f31,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-17,f31,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-17,f4,Long day (7:30–4:30),100,1B2,Tea_Fertilizing,26.4
+2026-09-17,f6,Full day (7:30–1:30),0,1D,Tea_Fertilizing,18.8
+2026-09-17,f6,Full day (7:30–1:30),0,1C1,Tea_Weeding,
+2026-09-17,f8,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Fertilizing,18.1
+2026-09-17,m1,"Half day, late start (10:30–1:30)",0,1C1,Tea_Plucking,17.3
+2026-09-17,m3,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-17,m6,"Half day, late start (10:30–1:30)",0,1C1,Tea_Fertilizing,23.5
+2026-09-18,f1,Long day (7:30–4:30),0,2A1,Tea_Fertilizing,21.5
+2026-09-18,f13,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Fertilizing,21.3
+2026-09-18,f20,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-18,f26,"Half day, late start (10:30–1:30)",0,1C1,Tea_Fertilizing,25.5
+2026-09-18,f27,"Half day, late start (10:30–1:30)",0,1D,Tea_Plucking,23.6
+2026-09-18,f28,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-18,f28,Long day (7:30–4:30),0,1B2,Tea_Weeding,
+2026-09-18,f29,"Half day, late start (10:30–1:30)",0,2A1,Tea_Plucking,16.5
+2026-09-18,f3,Full day (7:30–1:30),0,2C3,Tea_Fertilizing,26.4
+2026-09-18,f31,Long day (7:30–4:30),0,1B2,Tea_Fertilizing,22.3
+2026-09-18,f4,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Plucking,17.8
+2026-09-18,f6,Long day (7:30–4:30),0,1D,Tea_Plucking,23
+2026-09-18,f6,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-18,f8,Full day (7:30–1:30),0,1C1,Tea_Plucking,19.5
+2026-09-18,m1,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-18,m3,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Plucking,18.3
+2026-09-18,m6,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-19,f1,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-19,f13,"Half day, late start (10:30–1:30)",0,3A1,Tea_Fertilizing,22.7
+2026-09-19,f13,"Half day, late start (10:30–1:30)",0,1C1,Tea_Weeding,
+2026-09-19,f20,"Half day, early finish (7:30–10:30)",300,2C3,Tea_Plucking,21
+2026-09-19,f26,Full day (7:30–1:30),300,1D,Tea_Fertilizing,23.8
+2026-09-19,f27,Full day (7:30–1:30),0,3A1,Tea_Plucking,21.9
+2026-09-19,f28,Long day (7:30–4:30),0,3A1,Tea_Plucking,18.7
+2026-09-19,f29,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-19,f3,Long day (7:30–4:30),0,1B2,Tea_Weeding,
+2026-09-19,f31,"Half day, late start (10:30–1:30)",0,1C1,Tea_Plucking,20.8
+2026-09-19,f4,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-19,f6,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-19,f8,"Half day, late start (10:30–1:30)",0,2C3,Tea_Plucking,21.1
+2026-09-19,m1,Full day (7:30–1:30),0,2C3,Tea_Plucking,21.8
+2026-09-19,m3,Full day (7:30–1:30),0,3A1,Tea_Fertilizing,24.6
+2026-09-19,m6,Long day (7:30–4:30),0,1B2,Tea_Plucking,22.4
+2026-09-21,f1,Full day (7:30–1:30),0,1C1,Tea_Fertilizing,26.6
+2026-09-21,f1,Full day (7:30–1:30),0,2C3,Tea_Weeding,
+2026-09-21,f13,Long day (7:30–4:30),0,1D,Tea_Plucking,18.7
+2026-09-21,f20,Long day (7:30–4:30),0,3A1,Tea_Plucking,23.2
+2026-09-21,f26,Long day (7:30–4:30),0,3A1,Tea_Plucking,18.8
+2026-09-21,f27,"Half day, late start (10:30–1:30)",0,1C1,Tea_Fertilizing,17.8
+2026-09-21,f27,"Half day, late start (10:30–1:30)",0,1B3,Tea_Weeding,
+2026-09-21,f28,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,16.8
+2026-09-21,f29,Long day (7:30–4:30),0,1C1,Tea_Plucking,26.5
+2026-09-21,f3,Full day (7:30–1:30),0,1B2,Tea_Plucking,22.7
+2026-09-21,f31,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Plucking,17.7
+2026-09-21,f4,Long day (7:30–4:30),0,1D,Tea_Weeding,
+2026-09-21,f6,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Fertilizing,26.5
+2026-09-21,f8,"Half day, late start (10:30–1:30)",300,1C1,Tea_Fertilizing,23.2
+2026-09-21,f8,"Half day, late start (10:30–1:30)",300,1B2,Tea_Weeding,
+2026-09-21,m1,"Half day, late start (10:30–1:30)",0,2A1,Tea_Weeding,
+2026-09-21,m1,"Half day, late start (10:30–1:30)",0,1B3,Tea_Weeding,
+2026-09-21,m3,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,25.4
+2026-09-21,m6,"Half day, late start (10:30–1:30)",0,1C1,Tea_Fertilizing,25.8
+2026-09-22,f1,Full day (7:30–1:30),0,2A1,Tea_Plucking,23.5
+2026-09-22,f13,Full day (7:30–1:30),0,3A1,Tea_Plucking,17.1
+2026-09-22,f13,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-22,f20,Full day (7:30–1:30),0,1B2,Tea_Weeding,
+2026-09-22,f26,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Plucking,17.7
+2026-09-22,f26,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-22,f27,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Plucking,21.4
+2026-09-22,f28,Full day (7:30–1:30),0,1C1,Tea_Plucking,23.6
+2026-09-22,f29,Long day (7:30–4:30),0,1C1,Tea_Fertilizing,22.8
+2026-09-22,f3,Full day (7:30–1:30),0,2C3,Tea_Plucking,24.5
+2026-09-22,f31,Long day (7:30–4:30),0,1B2,Tea_Plucking,22.1
+2026-09-22,f4,Full day (7:30–1:30),0,1C1,Tea_Fertilizing,25.5
+2026-09-22,f6,Full day (7:30–1:30),250,1D,Tea_Weeding,
+2026-09-22,f8,Long day (7:30–4:30),0,2A1,Tea_Plucking,22.2
+2026-09-22,m1,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-22,m3,Full day (7:30–1:30),0,1C1,Tea_Fertilizing,25.7
+2026-09-22,m6,"Half day, late start (10:30–1:30)",0,1B3,Tea_Plucking,22.7
+2026-09-23,f1,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-23,f13,Long day (7:30–4:30),300,2C3,Tea_Plucking,26
+2026-09-23,f20,Full day (7:30–1:30),0,3A1,Tea_Plucking,22.8
+2026-09-23,f20,Full day (7:30–1:30),0,1B3,Tea_Weeding,
+2026-09-23,f26,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Plucking,25.7
+2026-09-23,f27,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Plucking,21.2
+2026-09-23,f27,"Half day, early finish (7:30–10:30)",0,1D,Tea_Weeding,
+2026-09-23,f28,"Half day, late start (10:30–1:30)",0,1D,Tea_Fertilizing,22.2
+2026-09-23,f29,"Half day, late start (10:30–1:30)",0,1B2,Tea_Weeding,
+2026-09-23,f3,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-23,f3,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-23,f31,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,15.7
+2026-09-23,f4,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Plucking,26.6
+2026-09-23,f6,"Half day, early finish (7:30–10:30)",100,2C3,Tea_Weeding,
+2026-09-23,f8,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-23,m1,Full day (7:30–1:30),0,2A1,Tea_Fertilizing,24.2
+2026-09-23,m3,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-23,m6,Long day (7:30–4:30),0,1C1,Tea_Plucking,16
+2026-09-25,f1,Long day (7:30–4:30),0,2A1,Tea_Plucking,23.9
+2026-09-25,f1,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-25,f13,"Half day, late start (10:30–1:30)",0,1C1,Tea_Weeding,
+2026-09-25,f20,Long day (7:30–4:30),0,1C1,Tea_Plucking,15.8
+2026-09-25,f26,"Half day, early finish (7:30–10:30)",0,1D,Tea_Fertilizing,25.5
+2026-09-25,f27,Full day (7:30–1:30),200,1B2,Tea_Fertilizing,22.6
+2026-09-25,f28,Full day (7:30–1:30),0,2A1,Tea_Plucking,25.1
+2026-09-25,f29,"Half day, late start (10:30–1:30)",0,1B2,Tea_Plucking,21.2
+2026-09-25,f3,Long day (7:30–4:30),0,1C1,Tea_Weeding,
+2026-09-25,f31,Long day (7:30–4:30),250,2A1,Tea_Fertilizing,25.4
+2026-09-25,f4,"Half day, early finish (7:30–10:30)",0,1D,Tea_Weeding,
+2026-09-25,f6,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-25,f8,Full day (7:30–1:30),0,2C3,Tea_Fertilizing,23.3
+2026-09-25,f8,Full day (7:30–1:30),0,1B2,Tea_Weeding,
+2026-09-25,m1,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Plucking,18.8
+2026-09-25,m3,Long day (7:30–4:30),200,3A1,Tea_Plucking,22.8
+2026-09-25,m6,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Fertilizing,18.3
+2026-09-26,f1,Long day (7:30–4:30),0,1C1,Tea_Fertilizing,25.7
+2026-09-26,f13,Full day (7:30–1:30),0,1B3,Tea_Plucking,23
+2026-09-26,f13,Full day (7:30–1:30),0,2A1,Tea_Weeding,
+2026-09-26,f20,Full day (7:30–1:30),0,2A1,Tea_Plucking,16.3
+2026-09-26,f26,"Half day, late start (10:30–1:30)",0,2C3,Tea_Plucking,22.8
+2026-09-26,f27,"Half day, late start (10:30–1:30)",100,2C3,Tea_Weeding,
+2026-09-26,f28,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-26,f29,"Half day, early finish (7:30–10:30)",0,1D,Tea_Weeding,
+2026-09-26,f3,"Half day, late start (10:30–1:30)",0,1C1,Tea_Plucking,18.5
+2026-09-26,f31,"Half day, late start (10:30–1:30)",0,1B2,Tea_Fertilizing,25.3
+2026-09-26,f31,"Half day, late start (10:30–1:30)",0,2C3,Tea_Weeding,
+2026-09-26,f4,"Half day, late start (10:30–1:30)",0,1B2,Tea_Fertilizing,24.2
+2026-09-26,f6,Long day (7:30–4:30),150,1D,Tea_Fertilizing,21.2
+2026-09-26,f8,"Half day, early finish (7:30–10:30)",0,3A1,Tea_Plucking,23.2
+2026-09-26,m1,Full day (7:30–1:30),0,1D,Tea_Fertilizing,23.7
+2026-09-26,m3,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Plucking,26.7
+2026-09-26,m3,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Weeding,
+2026-09-26,m6,"Half day, late start (10:30–1:30)",0,2A1,Tea_Plucking,25.6
+2026-09-26,m6,"Half day, late start (10:30–1:30)",0,2A1,Tea_Weeding,
+2026-09-28,f1,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Weeding,
+2026-09-28,f13,Full day (7:30–1:30),0,2A1,Tea_Fertilizing,18.7
+2026-09-28,f20,"Half day, late start (10:30–1:30)",0,1B2,Tea_Plucking,18.5
+2026-09-28,f20,"Half day, late start (10:30–1:30)",0,3A1,Tea_Weeding,
+2026-09-28,f26,Full day (7:30–1:30),0,1C1,Tea_Fertilizing,23.2
+2026-09-28,f27,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,17.6
+2026-09-28,f28,"Half day, late start (10:30–1:30)",0,1B2,Tea_Plucking,26.9
+2026-09-28,f29,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Fertilizing,26.1
+2026-09-28,f3,"Half day, late start (10:30–1:30)",200,1C1,Tea_Fertilizing,21.5
+2026-09-28,f31,"Half day, early finish (7:30–10:30)",0,1D,Tea_Plucking,16.5
+2026-09-28,f4,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-28,f6,"Half day, late start (10:30–1:30)",0,1B2,Tea_Weeding,
+2026-09-28,f8,"Half day, late start (10:30–1:30)",0,1B3,Tea_Weeding,
+2026-09-28,f8,"Half day, late start (10:30–1:30)",0,1D,Tea_Weeding,
+2026-09-28,m1,"Half day, early finish (7:30–10:30)",200,1D,Tea_Weeding,
+2026-09-28,m3,"Half day, late start (10:30–1:30)",0,2C3,Tea_Plucking,24.1
+2026-09-28,m6,Full day (7:30–1:30),0,2C3,Tea_Fertilizing,26.9
+2026-09-28,m6,Full day (7:30–1:30),0,3A1,Tea_Weeding,
+2026-09-29,f1,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-29,f1,Long day (7:30–4:30),0,3A1,Tea_Weeding,
+2026-09-29,f13,Long day (7:30–4:30),0,1B2,Tea_Fertilizing,16.6
+2026-09-29,f20,Long day (7:30–4:30),0,1B3,Tea_Plucking,16.1
+2026-09-29,f20,Long day (7:30–4:30),0,1B2,Tea_Weeding,
+2026-09-29,f26,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-29,f26,Long day (7:30–4:30),0,1B3,Tea_Weeding,
+2026-09-29,f27,"Half day, late start (10:30–1:30)",0,1B3,Tea_Plucking,20.4
+2026-09-29,f28,Full day (7:30–1:30),250,1B2,Tea_Weeding,
+2026-09-29,f29,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Fertilizing,21.1
+2026-09-29,f3,Long day (7:30–4:30),0,1B2,Tea_Plucking,24.5
+2026-09-29,f31,"Half day, early finish (7:30–10:30)",200,1B3,Tea_Fertilizing,17
+2026-09-29,f4,"Half day, early finish (7:30–10:30)",0,1C1,Tea_Fertilizing,17.7
+2026-09-29,f6,"Half day, late start (10:30–1:30)",0,1D,Tea_Fertilizing,24.4
+2026-09-29,f8,Full day (7:30–1:30),0,2C3,Tea_Plucking,17.2
+2026-09-29,m1,"Half day, late start (10:30–1:30)",0,1B2,Tea_Fertilizing,25
+2026-09-29,m3,Full day (7:30–1:30),0,2C3,Tea_Plucking,26.2
+2026-09-29,m6,Full day (7:30–1:30),150,1B3,Tea_Fertilizing,26
+2026-09-30,f1,"Half day, late start (10:30–1:30)",0,3A1,Tea_Fertilizing,25.8
+2026-09-30,f13,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-30,f13,"Half day, early finish (7:30–10:30)",0,1B2,Tea_Weeding,
+2026-09-30,f20,Long day (7:30–4:30),0,1C1,Tea_Plucking,18.7
+2026-09-30,f26,Long day (7:30–4:30),0,2A1,Tea_Weeding,
+2026-09-30,f27,"Half day, late start (10:30–1:30)",0,1B3,Tea_Fertilizing,20.4
+2026-09-30,f28,"Half day, early finish (7:30–10:30)",0,1D,Tea_Weeding,
+2026-09-30,f29,"Half day, early finish (7:30–10:30)",0,2C3,Tea_Weeding,
+2026-09-30,f3,Full day (7:30–1:30),0,1B2,Tea_Fertilizing,17.9
+2026-09-30,f31,Long day (7:30–4:30),0,1B2,Tea_Fertilizing,24.6
+2026-09-30,f4,"Half day, late start (10:30–1:30)",200,1B3,Tea_Fertilizing,23.1
+2026-09-30,f6,Long day (7:30–4:30),0,2C3,Tea_Weeding,
+2026-09-30,f8,Full day (7:30–1:30),0,1B3,Tea_Fertilizing,21.7
+2026-09-30,m1,"Half day, early finish (7:30–10:30)",0,1B3,Tea_Fertilizing,17.8
+2026-09-30,m1,"Half day, early finish (7:30–10:30)",0,2A1,Tea_Weeding,
+2026-09-30,m3,Full day (7:30–1:30),0,1B2,Tea_Plucking,21.4
+2026-09-30,m6,"Half day, late start (10:30–1:30)",0,2A1,Tea_Plucking,22.2

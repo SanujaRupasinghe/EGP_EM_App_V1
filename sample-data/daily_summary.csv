@@ -1,0 +1,24 @@
+report_date,login_available,login_time,logout_available,logout_time,collector_arrived,collector_amount_kg,cash_receive,cash_expenses,cash_description,cash_remarks
+2026-09-01,true,07:14,true,17:05,true,123.9,18835,1569,Fuel and supplies,
+2026-09-02,true,07:15,true,17:04,true,104.1,12247,2348,Transport repair,
+2026-09-03,true,07:13,true,17:00,true,99.7,18167,2069,Fuel and supplies,
+2026-09-04,true,07:14,true,17:00,true,98.0,16924,2411,Fertilizer purchase,
+2026-09-07,true,07:13,true,17:04,true,115.1,11892,3365,Transport repair,Late collector arrival
+2026-09-08,true,07:14,true,17:02,true,112.5,18752,4620,Fuel and supplies,
+2026-09-09,true,07:15,true,17:05,true,110.0,15677,2218,Fuel and supplies,
+2026-09-10,true,07:11,true,17:01,true,102.6,14519,3526,Packing material,
+2026-09-11,true,07:11,true,17:03,true,103.2,15050,2085,Transport repair,
+2026-09-12,true,07:11,true,17:01,true,110.7,16767,2455,Transport repair,
+2026-09-14,true,07:10,true,17:00,true,128.8,13149,4196,Fuel and supplies,
+2026-09-16,true,07:14,true,17:00,true,97.2,16013,1679,Fuel and supplies,
+2026-09-17,true,07:14,true,17:03,true,118.2,12233,3682,Fertilizer purchase,
+2026-09-18,true,07:10,false,,true,98.4,14149,3500,Fertilizer purchase,
+2026-09-19,true,07:15,true,17:00,true,115.6,14446,3901,Packing material,
+2026-09-21,true,07:10,true,17:00,true,106.2,14841,1718,Packing material,
+2026-09-22,true,07:12,true,,true,92.7,11503,2862,Fuel and supplies,Late collector arrival
+2026-09-23,true,07:10,true,17:03,true,127.9,15879,2181,Fuel and supplies,
+2026-09-25,true,07:11,true,,true,123.6,14448,2745,Fuel and supplies,
+2026-09-26,true,07:13,false,,true,116.1,19958,2019,Fertilizer purchase,
+2026-09-28,true,07:10,true,17:05,true,100.9,16563,2884,Fuel and supplies,Late collector arrival
+2026-09-29,true,07:14,true,17:00,true,117.6,17699,1910,Transport repair,Late collector arrival
+2026-09-30,true,07:10,true,17:05,true,116.6,11877,3616,Fertilizer purchase,

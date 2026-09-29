@@ -1,0 +1,17 @@
+{
+  "name": "Tea Estate Daily Report",
+  "short_name": "Estate Report",
+  "description": "Daily report entry, analysis, and payroll for the estate office.",
+  "start_url": "/entry",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#065f46",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

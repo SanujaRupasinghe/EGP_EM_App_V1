@@ -1,0 +1,83 @@
+I want you to create a app where a user can enter data in a sheet each and every day
+one per day
+for tea estate management system app
+
+3 csv files has to be created which is hidden from the user where a technicle person will log into thema dn chnage their stuff
+3 files are 
+Employees Names
+
+m1 - Kokila
+m3 - p_Nimal
+m6 - Sarath
+f1 - Seetha
+f3 - Soma
+f4 - Swarna
+f6 - Nilanthi
+f8 - Lakmali
+f13- Wimala
+f20- Surangi
+f26- Dilshani
+f27- Irosha
+f28- Sandya
+f29- Chathurani
+f31- Dhaneesha
+
+
+Estate Sections
+
+1D
+1C1
+1B3
+1B2
+2C3
+3A1
+2A1
+2C3
+
+
+Estate Works
+
+Tea_Plucking
+Tea_Weeding
+Fultilizing
+
+
+
+The workers may work different time periods; they do work at different times they are standards
+7.30 - 1.30  = 1
+7.30 - 4.30  = 1.5
+10.30 - 1.30 = 0.5
+7.30 - 10.30 = 0.5
+
+
+
+Each day, the estate manager fills out the manually written form and sends it via WhatsApp to the office. The person in  the office has to enter that data again into the computer system 
+What I want is to design a system so that the office person can do it properly
+
+In the interface for each day, he can enter the data once. If something went wrong, he can do it a few more times, but it will be amendments to the first entered inputs
+
+He cannot alter or add future data or change past days' data. 
+
+There should be an analysis page so the office person can analyze by selecting a date range
+The analysis has to be done by selecting a date range, section, and employee name; select Estate work; if something is not selected, it will be considered as all
+
+Like, from this day to that day in section 2A1, everyone has plucked this much tea employee does not selected so system consider every one
+
+When entering data into the system, what the user interface should provide is the data entry to insert or select (data from CSV) in PDF page 1 
+
+One employee may do a few jobs in different sections sometimes; for example, Kokila worked from 7.30 to 1.30, a full day considered as (1), and he plucked 18 kg of tea in 1A1 and Did Weeding also in section 1B1, and he took some advance or LKR 500; it should be mentioned in the cash summary also
+
+On the first page, there is transport login logout that is weather transport available for the estate officer to come to the estate in the morning and to go home in the afternoon
+
+On the first page, there is a tea collector arrival, which means the tea collector arrival mostly collector come to the estate, and the amount of tea he collected, which is the total amount plucked in the day
+
+The payments are as follows: the payments should be added automatically in a report, like PDF page 2. Payments are done 3 times a month: the first 10 days, then 2 nd 10 days, and the third 10 days. Commonly, 23 days out of 30 days are used for its operations.
+The payment for a worker for full-day work (1), which is 7.30 to 1.30, is 800 LKR per day; for 7.30 to 4.30 1.5*800; and for 7.30 to 10.30, it is 800*0.5 
+But for tea, if some one work full day, 7.30 to 8.30 if he plucks 0 to 18 kg, the price is 800, but for each 1 kg onwards, the price will be increased by 50lkr per 1 kg. And if an employee works 1.5 day 7.30 to 4.30 he which means he should be given 800*1.5, but he plucked 30 kg, he will be given max(800*1.5, 800+50*(30-18)). Keep 18 as a parameter that can be changed from time to time.
+
+
+We only consider the tea-related work in the estate in the app
+
+
+
+
