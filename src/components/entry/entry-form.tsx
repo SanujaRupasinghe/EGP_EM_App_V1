@@ -37,7 +37,6 @@ export function EntryForm({
   status,
   readOnly,
   isAdmin,
-  alreadyCsvImported,
   employees,
   sections,
   workTypes,
@@ -56,7 +55,6 @@ export function EntryForm({
   status: DailyReport["status"];
   readOnly: boolean;
   isAdmin: boolean;
-  alreadyCsvImported: boolean;
   employees: Employee[];
   sections: Section[];
   workTypes: WorkType[];
@@ -106,6 +104,7 @@ export function EntryForm({
   const [submitting, setSubmitting] = useState(false);
   const [addingWorkers, setAddingWorkers] = useState(false);
   const [clearing, setClearing] = useState(false);
+  const [savedNotice, setSavedNotice] = useState(false);
 
   const availableEmployees = useMemo(
     () => employees.filter((e) => !attendance.some((a) => a.employee_id === e.id)),
@@ -505,6 +504,20 @@ export function EntryForm({
     router.refresh();
   }
 
+  // Field edits already autosave on blur/change, but admins correcting an
+  // already-submitted (finalized) day get no other confirmation that a
+  // correction went through — this just bumps the amendment trail and gives
+  // a visible "Saved" acknowledgement instead of a silent no-op.
+  async function handleSaveChanges() {
+    setSubmitting(true);
+    setError(null);
+    await touchReport();
+    setSubmitting(false);
+    setSavedNotice(true);
+    setTimeout(() => setSavedNotice(false), 2500);
+    router.refresh();
+  }
+
   const allVisibleChecked =
     filteredAvailable.length > 0 && filteredAvailable.every((e) => checkedIds.has(e.id));
 
@@ -555,21 +568,20 @@ export function EntryForm({
         <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
       )}
 
-      <DailyReportCsv
-        reportId={reportId}
-        reportDate={reportDate}
-        isAdmin={isAdmin}
-        alreadyCsvImported={alreadyCsvImported}
-        readOnly={readOnly}
-        employees={employees}
-        sections={sections}
-        workTypes={workTypes}
-        timePresets={timePresets}
-        attendance={attendance}
-        transport={transport}
-        teaCollector={teaCollector}
-        cashSummary={cashSummary}
-      />
+      {isAdmin && (
+        <DailyReportCsv
+          reportId={reportId}
+          reportDate={reportDate}
+          employees={employees}
+          sections={sections}
+          workTypes={workTypes}
+          timePresets={timePresets}
+          attendance={attendance}
+          transport={transport}
+          teaCollector={teaCollector}
+          cashSummary={cashSummary}
+        />
+      )}
 
       {!readOnly && (
         <Card>
@@ -1028,10 +1040,12 @@ export function EntryForm({
         </CardBody>
       </Card>
 
-      {!readOnly && status === "draft" && (
+      {!readOnly && (status === "draft" || isAdmin) && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-sm">Step 3 · Review &amp; submit</CardTitle>
+            <CardTitle className="text-sm">
+              {status === "draft" ? "Step 3 · Review & submit" : "Save corrections"}
+            </CardTitle>
           </CardHeader>
           <CardBody className="space-y-3">
             <div className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
@@ -1052,13 +1066,36 @@ export function EntryForm({
                 <p className="font-semibold text-slate-900">{formatLKR(cashBalance)}</p>
               </div>
             </div>
-            <p className="text-xs text-slate-500">
-              Double-check the entries above, then submit. Submitted reports move to History and
-              are locked from further edits unless an admin unlocks them.
-            </p>
-            <Button onClick={handleSubmitDay} disabled={submitting} className="w-full sm:w-auto">
-              {submitting ? "Submitting…" : "Submit day"}
-            </Button>
+            {status === "draft" ? (
+              <>
+                <p className="text-xs text-slate-500">
+                  Double-check the entries above, then submit. Submitted reports move to History
+                  and are locked from further edits unless an admin unlocks them.
+                </p>
+                <Button onClick={handleSubmitDay} disabled={submitting} className="w-full sm:w-auto">
+                  {submitting ? "Submitting…" : "Submit day"}
+                </Button>
+              </>
+            ) : (
+              <>
+                <p className="text-xs text-slate-500">
+                  This day is already submitted. Field edits above are saved automatically — use
+                  this to confirm your corrections went through.
+                </p>
+                <div className="flex items-center gap-3">
+                  <Button
+                    onClick={handleSaveChanges}
+                    disabled={submitting}
+                    className="w-full sm:w-auto"
+                  >
+                    {submitting ? "Saving…" : "Save changes"}
+                  </Button>
+                  {savedNotice && (
+                    <span className="text-xs font-medium text-emerald-700">Saved ✓</span>
+                  )}
+                </div>
+              </>
+            )}
           </CardBody>
         </Card>
       )}

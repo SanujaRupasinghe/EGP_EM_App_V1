@@ -89,7 +89,6 @@ export default async function HistoryPage({
         status={report.status}
         readOnly={readOnly}
         isAdmin={isAdmin}
-        alreadyCsvImported={report.csv_imported_at != null}
         employees={employees ?? []}
         sections={sections ?? []}
         workTypes={workTypes ?? []}

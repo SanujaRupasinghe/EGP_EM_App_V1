@@ -27,12 +27,12 @@ import type {
 
 type AttendanceRow = Attendance & { job_lines: JobLine[] };
 
+// Admin-only: office users no longer see this card at all (entry-form.tsx
+// gates it on isAdmin), so there's no "once per day" upload limit to enforce
+// here — admins can always overwrite a day's data via CSV.
 export function DailyReportCsv({
   reportId,
   reportDate,
-  isAdmin,
-  alreadyCsvImported,
-  readOnly,
   employees,
   sections,
   workTypes,
@@ -44,9 +44,6 @@ export function DailyReportCsv({
 }: {
   reportId: string;
   reportDate: string;
-  isAdmin: boolean;
-  alreadyCsvImported: boolean;
-  readOnly: boolean;
   employees: Employee[];
   sections: Section[];
   workTypes: WorkType[];
@@ -127,8 +124,6 @@ export function DailyReportCsv({
     window.location.reload();
   }
 
-  const canUpload = !readOnly && (isAdmin || !alreadyCsvImported);
-
   return (
     <Card>
       <CardHeader>
@@ -154,30 +149,18 @@ export function DailyReportCsv({
           </Button>
         </div>
 
-        {canUpload ? (
-          <>
-            <p className="text-xs text-slate-500">
-              One row per job. Fill in employee codes exactly as they appear in Admin →
-              Employees (e.g. &quot;f1&quot;) — the name column is for your reference only and
-              isn&apos;t checked. Uploading replaces all of {reportDate}&apos;s data.
-              {!isAdmin && " You can only do this once per day."}
-            </p>
-            <input
-              ref={inputRef}
-              type="file"
-              accept=".csv"
-              onChange={handleFile}
-              className="block w-full text-sm text-slate-600"
-            />
-          </>
-        ) : (
-          !readOnly && (
-            <p className="rounded-lg bg-slate-100 px-3 py-2 text-xs text-slate-600">
-              You&apos;ve already uploaded a CSV for today. Ask an admin if you need further
-              bulk changes.
-            </p>
-          )
-        )}
+        <p className="text-xs text-slate-500">
+          One row per job. Fill in employee codes exactly as they appear in Admin →
+          Employees (e.g. &quot;f1&quot;) — the name column is for your reference only and
+          isn&apos;t checked. Uploading replaces all of {reportDate}&apos;s data.
+        </p>
+        <input
+          ref={inputRef}
+          type="file"
+          accept=".csv"
+          onChange={handleFile}
+          className="block w-full text-sm text-slate-600"
+        />
 
         {parseErrors.length > 0 && (
           <div className="space-y-1 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
