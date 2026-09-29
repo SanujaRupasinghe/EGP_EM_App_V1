@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,16 +12,15 @@ function addDays(dateStr: string, delta: number) {
 }
 
 export function DatePickerNav({ date, max }: { date: string; max: string }) {
-  const router = useRouter();
   const pathname = usePathname();
 
   function goTo(next: string) {
     if (next > max) return;
-    // router.push alone can serve a stale client-cached snapshot of the
-    // target date (e.g. if you visited it earlier in the session before
-    // more data was entered) — refresh forces a fresh server fetch.
-    router.push(`${pathname}?date=${next}`);
-    router.refresh();
+    // A full navigation, not router.push — the client router cache can
+    // otherwise serve a stale snapshot of the target date (e.g. if you
+    // visited it earlier in the session before more data was entered),
+    // and router.push + router.refresh() together can still race.
+    window.location.href = `${pathname}?date=${next}`;
   }
 
   return (

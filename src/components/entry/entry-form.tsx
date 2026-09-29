@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { cn, formatDate, formatLKR } from "@/lib/utils";
@@ -133,6 +133,34 @@ export function EntryForm({
     [attendance],
   );
 
+  // Tea plucking is the overwhelmingly common job, so it's pinned first in
+  // every work-type dropdown and used as the default for new job lines,
+  // instead of falling out wherever alphabetical/code order happens to put it.
+  const sortedWorkTypes = useMemo(
+    () =>
+      [...workTypes].sort((a, b) =>
+        a.code === "Tea_Plucking" ? -1 : b.code === "Tea_Plucking" ? 1 : 0,
+      ),
+    [workTypes],
+  );
+
+  const pluckedKg = useMemo(() => {
+    const pluckingWorkTypeIds = new Set(
+      workTypes.filter((w) => w.code === "Tea_Plucking").map((w) => w.id),
+    );
+    return attendance.reduce(
+      (sum, a) =>
+        sum +
+        a.job_lines.reduce(
+          (s, jl) => (pluckingWorkTypeIds.has(jl.work_type_id) ? s + Number(jl.quantity_kg ?? 0) : s),
+          0,
+        ),
+      0,
+    );
+  }, [attendance, workTypes]);
+
+  const previousPluckedKgRef = useRef(pluckedKg);
+
   const incomeEntries = useMemo(
     () => cashEntries.filter((e) => e.type === "income"),
     [cashEntries],
@@ -219,7 +247,7 @@ export function EntryForm({
     const jobLinesToInsert = (newAttendance as Attendance[]).map((a) => ({
       attendance_id: a.id,
       section_id: sections[0]?.id,
-      work_type_id: workTypes[0]?.id,
+      work_type_id: sortedWorkTypes[0]?.id,
       quantity_kg: null,
     }));
     const { data: newJobLines, error: jlError } = await supabase
@@ -272,7 +300,7 @@ export function EntryForm({
       .insert({
         attendance_id: attendanceId,
         section_id: sections[0]?.id,
-        work_type_id: workTypes[0]?.id,
+        work_type_id: sortedWorkTypes[0]?.id,
         quantity_kg: null,
       })
       .select()
@@ -343,6 +371,22 @@ export function EntryForm({
     if (error) return handleError(error);
     await touchReport();
   }
+
+  // The tea collector's amount is auto-suggested from the day's plucked kg total,
+  // and keeps following it as attendance/job lines change — but only while it's
+  // still "in sync" with that total (i.e. nobody has typed a different number in).
+  // Once someone overrides it with a value that doesn't match the running total,
+  // this stops touching it so the manual figure sticks.
+  useEffect(() => {
+    const previous = previousPluckedKgRef.current;
+    previousPluckedKgRef.current = pluckedKg;
+    if (readOnly) return;
+    const inSync = teaCollector.amount_kg == null || teaCollector.amount_kg === previous;
+    if (inSync && teaCollector.amount_kg !== pluckedKg) {
+      saveTeaCollector({ amount_kg: pluckedKg || null });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pluckedKg, readOnly]);
 
   async function saveCashSummary(patch: Partial<CashSummary>) {
     const next = { ...cashSummary, ...patch };
@@ -730,7 +774,7 @@ export function EntryForm({
                                     updateJobLine(row.id, jl.id, { work_type_id: e.target.value })
                                   }
                                 >
-                                  {workTypes.map((w) => (
+                                  {sortedWorkTypes.map((w) => (
                                     <option key={w.id} value={w.id}>
                                       {w.code.replace(/_/g, " ")}
                                     </option>
@@ -874,11 +918,13 @@ export function EntryForm({
           <div>
             <Label>Amount collected (kg)</Label>
             <Input
+              key={teaCollector.amount_kg ?? "none"}
               type="number"
               min={0}
               step="0.1"
               disabled={readOnly}
               defaultValue={teaCollector.amount_kg ?? ""}
+              placeholder={pluckedKg > 0 ? `Suggested: ${pluckedKg}` : undefined}
               onBlur={(e) =>
                 saveTeaCollector({
                   amount_kg: e.target.value ? Number(e.target.value) : null,

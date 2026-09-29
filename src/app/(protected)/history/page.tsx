@@ -6,6 +6,9 @@ import { todayColombo } from "@/lib/utils";
 import { EntryForm } from "@/components/entry/entry-form";
 import { DatePickerNav } from "@/components/entry/date-picker-nav";
 import { getBroughtForwardBalance } from "@/lib/daily-report";
+import { CreateReportButton } from "@/components/history/create-report-button";
+import { MarkHolidayButton } from "@/components/history/mark-holiday-button";
+import { DeleteReportDataButton } from "@/components/history/delete-report-data-button";
 import type { Attendance, JobLine } from "@/lib/supabase/types";
 
 export default async function HistoryPage({
@@ -22,17 +25,41 @@ export default async function HistoryPage({
   const isAdmin = session.profile?.role === "admin";
 
   const supabase = await createClient();
-  const { data: report } = await supabase
-    .from("daily_reports")
-    .select("*")
-    .eq("report_date", reportDate)
-    .maybeSingle();
+  const [{ data: report }, { data: holiday }] = await Promise.all([
+    supabase.from("daily_reports").select("*").eq("report_date", reportDate).maybeSingle(),
+    supabase.from("holidays").select("*").eq("date", reportDate).maybeSingle(),
+  ]);
 
   if (!report) {
     return (
       <div className="space-y-4">
         <DatePickerNav date={reportDate} max={today} />
-        <p className="text-sm text-slate-500">No report was saved for this date.</p>
+        {holiday ? (
+          <div className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
+            <p className="font-medium">
+              This day is marked as a holiday{holiday.reason ? ` — ${holiday.reason}` : ""}.
+            </p>
+            {isAdmin && (
+              <p className="mt-1 text-xs">
+                To add a report for this date, remove the holiday in{" "}
+                <Link href="/admin/holidays" className="font-medium underline">
+                  Admin → Holidays
+                </Link>{" "}
+                first.
+              </p>
+            )}
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm text-slate-500">No report was saved for this date.</p>
+            {isAdmin && (
+              <div className="flex flex-wrap gap-2">
+                <CreateReportButton reportDate={reportDate} />
+                <MarkHolidayButton reportDate={reportDate} />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     );
   }
@@ -72,7 +99,21 @@ export default async function HistoryPage({
 
   return (
     <div className="space-y-4">
-      <DatePickerNav date={reportDate} max={today} />
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <DatePickerNav date={reportDate} max={today} />
+        {isAdmin &&
+          (holiday ? (
+            <DeleteReportDataButton reportDate={reportDate} />
+          ) : (
+            <MarkHolidayButton reportDate={reportDate} hasData />
+          ))}
+      </div>
+      {holiday && (
+        <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
+          This date is marked as a holiday{holiday.reason ? ` (${holiday.reason})` : ""}, but a
+          report from before the holiday was set is still saved below.
+        </p>
+      )}
       {readOnly && (
         <p className="rounded-lg bg-slate-100 px-3 py-2 text-xs text-slate-600">
           History is read-only. Use{" "}
