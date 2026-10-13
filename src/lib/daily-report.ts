@@ -58,12 +58,15 @@ export async function getBroughtForwardBalance(
   supabase: SupabaseClient,
   reportDate: string,
 ): Promise<number> {
+  // Running total of every earlier day's receive - expenses, rather than the
+  // stored cash_summary.balance, which can be stale (it's only rewritten when
+  // a cash entry changes, so it can lag behind its own day's brought-forward).
   const { data } = await supabase
     .from("cash_summary")
-    .select("balance, daily_reports!inner(report_date)")
-    .lt("daily_reports.report_date", reportDate)
-    .order("report_date", { referencedTable: "daily_reports", ascending: false })
-    .limit(1)
-    .maybeSingle();
-  return Number(data?.balance ?? 0);
+    .select("receive, expenses, daily_reports!inner(report_date)")
+    .lt("daily_reports.report_date", reportDate);
+  return (data ?? []).reduce(
+    (sum, row) => sum + Number(row.receive ?? 0) - Number(row.expenses ?? 0),
+    0,
+  );
 }
