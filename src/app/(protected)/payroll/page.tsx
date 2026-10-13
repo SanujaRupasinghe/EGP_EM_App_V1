@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth";
-import { todayColombo, formatDate } from "@/lib/utils";
+import { todayColombo, formatDate, compareEmployeeCodes } from "@/lib/utils";
 import { periodForDate, periodPageNumber, shiftPeriod } from "@/lib/payroll";
 import { eachDate } from "@/lib/analytics";
 import { PayrollRangeFilter } from "@/components/payroll/payroll-range-filter";
@@ -86,7 +86,7 @@ export default async function PayrollPage({
         loan: adj?.loan ?? 0,
       };
     })
-    .sort((a, b) => a.code.localeCompare(b.code));
+    .sort((a, b) => compareEmployeeCodes(a.code, b.code));
 
   const prevAnchor = shiftPeriod(period, -1);
   const nextAnchor = shiftPeriod(period, 1);
@@ -114,7 +114,7 @@ export default async function PayrollPage({
           </Link>
         </div>
       </div>
-      <PayrollRangeFilter from={from} to={to} />
+      <PayrollRangeFilter key={`${from}_${to}`} from={from} to={to} />
       <p className="text-sm text-slate-600">Range: {periodLabel}</p>
       {payError && (
         <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
@@ -122,6 +122,7 @@ export default async function PayrollPage({
         </p>
       )}
       <PayrollTable
+        key={`${from}_${to}`}
         rows={rows}
         dates={dates}
         periodStart={from}
