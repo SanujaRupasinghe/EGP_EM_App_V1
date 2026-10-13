@@ -753,7 +753,7 @@ export function EntryForm({
                             return (
                               <div key={jl.id} className="flex flex-wrap items-center gap-1.5">
                                 <Select
-                                  className="h-8 w-24"
+                                  className="h-8 w-44 min-w-[11rem]"
                                   value={jl.section_id}
                                   disabled={readOnly}
                                   onChange={(e) =>
