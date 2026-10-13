@@ -75,7 +75,7 @@ export function WorkTrendChart({
           ))}
         </Select>
       </div>
-      <DailyTrendChart data={data} valueSuffix={byKg ? " kg" : " worker-days"} />
+      <DailyTrendChart data={data} valueSuffix={byKg ? " kg" : " wd"} />
     </div>
   );
 }

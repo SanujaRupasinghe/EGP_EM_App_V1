@@ -5,8 +5,8 @@ import { BarChart } from "@/components/analysis/charts/bar-chart";
 import { Select } from "@/components/ui/select";
 import type { JobLineDetailRow, WorkType } from "@/lib/supabase/types";
 
-// Different estate works are measured in different units — tea plucking and
-// fertilizing in kg, weeding in worker-days (the day_fraction of whoever did
+// Different estate works are measured in different units — tea plucking in kg,
+// fertilizing and weeding in worker-days (wd) (the day_fraction of whoever did
 // it, since weeding has no kg quantity at all) — so this chart always shows
 // exactly one work type at a time, in its own unit, instead of blending
 // incompatible totals together.
@@ -62,7 +62,7 @@ export function WorkTypeKgChart({
           </option>
         ))}
       </Select>
-      <BarChart data={data} valueSuffix={byKg ? " kg" : " worker-days"} showTable={showTable} />
+      <BarChart data={data} valueSuffix={byKg ? " kg" : " wd"} showTable={showTable} />
     </div>
   );
 }

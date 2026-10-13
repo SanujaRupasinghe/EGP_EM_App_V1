@@ -88,8 +88,8 @@ export function aggregateJobLines(
  * interpolated away like a line chart would.
  *
  * `metric` picks what "amount" means for the work type being charted: kg for
- * quantity-tracked work (plucking, fertilizing), or the day_fraction (worker
- * -days) for work like weeding that isn't measured in kg at all. */
+ * quantity-tracked work (plucking), or the day_fraction (worker
+ * -days) for work like weeding and fertilizing that isn't measured in kg at all. */
 export function buildDailyChart(
   detail: JobLineDetailRow[],
   from: string,

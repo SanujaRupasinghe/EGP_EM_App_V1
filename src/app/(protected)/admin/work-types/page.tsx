@@ -4,7 +4,7 @@ import { CsvImport } from "@/components/admin/csv-import";
 
 const columns: ColumnConfig[] = [
   { key: "code", label: "Code", type: "text" },
-  { key: "requires_quantity", label: "Needs kg entry", type: "boolean" },
+  { key: "requires_quantity", label: "Needs kg entry (otherwise measured in wd)", type: "boolean" },
   { key: "active", label: "Active", type: "boolean" },
 ];
 

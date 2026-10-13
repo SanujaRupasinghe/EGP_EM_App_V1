@@ -717,7 +717,7 @@ export function EntryForm({
                 <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs text-slate-500">
                   <th className="sticky left-0 z-10 bg-slate-50 px-3 py-2 font-medium">Worker</th>
                   <th className="px-3 py-2 font-medium">Time</th>
-                  <th className="px-3 py-2 font-medium">Jobs (section · work · kg)</th>
+                  <th className="px-3 py-2 font-medium">Jobs (section · work · kg / wd)</th>
                   <th className="px-3 py-2 font-medium">Advance (LKR)</th>
                   {!readOnly && <th className="px-3 py-2" />}
                 </tr>
@@ -771,7 +771,13 @@ export function EntryForm({
                                   value={jl.work_type_id}
                                   disabled={readOnly}
                                   onChange={(e) =>
-                                    updateJobLine(row.id, jl.id, { work_type_id: e.target.value })
+                                    updateJobLine(row.id, jl.id, {
+                                      work_type_id: e.target.value,
+                                      ...(workTypes.find((w) => w.id === e.target.value)
+                                        ?.requires_quantity
+                                        ? {}
+                                        : { quantity_kg: null }),
+                                    })
                                   }
                                 >
                                   {sortedWorkTypes.map((w) => (
@@ -780,6 +786,14 @@ export function EntryForm({
                                     </option>
                                   ))}
                                 </Select>
+                                {workType && !workType.requires_quantity && (
+                                  <span
+                                    className="text-xs text-slate-500"
+                                    title="Measured in worker-days"
+                                  >
+                                    wd
+                                  </span>
+                                )}
                                 {workType?.requires_quantity && (
                                   <Input
                                     className="h-8 w-16"
