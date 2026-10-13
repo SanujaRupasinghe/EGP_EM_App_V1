@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
-import { CrudTable, type ColumnConfig } from "@/components/admin/crud-table";
+import type { ColumnConfig } from "@/components/admin/crud-table";
+import { HolidaysManager } from "@/components/admin/holidays-manager";
 import { CsvImport } from "@/components/admin/csv-import";
 
 const columns: ColumnConfig[] = [
@@ -35,12 +36,10 @@ export default async function HolidaysAdminPage() {
         sampleRows={sampleRows}
         templateFilename="holidays_template.csv"
       />
-      <CrudTable
+      <HolidaysManager
         key={(data ?? []).map((d) => d.id).join(",")}
-        table="holidays"
         columns={columns}
         initialRows={data ?? []}
-        emptyNewRow={{ date: "", reason: "" }}
       />
     </div>
   );

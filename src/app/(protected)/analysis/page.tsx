@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth";
-import { todayColombo, formatDate } from "@/lib/utils";
+import { todayColombo, formatDate, sortEmployees, sortSections } from "@/lib/utils";
 import { FilterBar } from "@/components/analysis/filter-bar";
 import { ExportCsvButton } from "@/components/analysis/export-csv-button";
 import { WorkTypeKgChart } from "@/components/analysis/charts/work-type-kg-chart";
@@ -97,8 +97,8 @@ export default async function AnalysisPage({
   const logoutAvailableDays = transportDays.filter((t) => t.logout_available).length;
   const teaCollectedKg = (teaRows ?? []).reduce((sum, t) => sum + Number(t.amount_kg ?? 0), 0);
 
-  const sectionOptions = (sections ?? []).map((s) => ({ id: s.id, label: s.code }));
-  const employeeOptions = (employees ?? []).map((e) => ({
+  const sectionOptions = sortSections(sections).map((s) => ({ id: s.id, label: s.code }));
+  const employeeOptions = sortEmployees(employees).map((e) => ({
     id: e.id,
     label: `${e.code} — ${e.name}`,
   }));

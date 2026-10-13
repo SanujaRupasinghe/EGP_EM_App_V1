@@ -129,7 +129,7 @@ export function CsvImport({
 
   return (
     <Card>
-      <CardBody className="space-y-3">
+      <CardBody className="space-y-2 p-2">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-xs font-medium text-slate-500">Bulk import from CSV</p>
           <Button

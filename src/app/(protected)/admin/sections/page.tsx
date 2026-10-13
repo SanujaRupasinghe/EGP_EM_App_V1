@@ -1,3 +1,4 @@
+import { sortSections } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/server";
 import { CrudTable, type ColumnConfig } from "@/components/admin/crud-table";
 import { CsvImport } from "@/components/admin/csv-import";
@@ -33,10 +34,11 @@ export default async function SectionsAdminPage() {
         templateFilename="sections_template.csv"
       />
       <CrudTable
-        key={(data ?? []).map((d) => d.id).join(",")}
+        key={sortSections(data).map((d) => d.id).join(",")}
         table="sections"
+        order="natural"
         columns={columns}
-        initialRows={data ?? []}
+        initialRows={sortSections(data)}
         emptyNewRow={{ code: "", area_acres: null, active: true }}
       />
     </div>

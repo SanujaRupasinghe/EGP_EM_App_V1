@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardBody } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { compareCodes, compareEmployeeCodes } from "@/lib/utils";
 
 type FieldType = "text" | "number" | "time" | "date" | "boolean";
 
@@ -23,17 +23,25 @@ export function CrudTable({
   columns,
   initialRows,
   emptyNewRow,
+  order,
+  onRowsChange,
 }: {
   table: string;
   columns: ColumnConfig[];
   initialRows: Row[];
   emptyNewRow: Record<string, unknown>;
+  order?: "employee" | "natural";
+  onRowsChange?: (rows: Row[]) => void;
 }) {
   const [rows, setRows] = useState<Row[]>(initialRows);
   const [newRow, setNewRow] = useState<Record<string, unknown>>(emptyNewRow);
   const [error, setError] = useState<string | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
   const supabase = createClient();
+
+  useEffect(() => {
+    onRowsChange?.(rows);
+  }, [rows, onRowsChange]);
 
   function friendlyError(message: string) {
     if (message.includes("foreign key") || message.includes("violates")) {
@@ -52,7 +60,12 @@ export function CrudTable({
       setError(friendlyError(error.message));
       return;
     }
-    setRows((r) => [...r, data as Row]);
+    setRows((r) => {
+      const next = [...r, data as Row];
+      if (!order) return next;
+      const cmp = order === "employee" ? compareEmployeeCodes : compareCodes;
+      return next.sort((a, b) => cmp(String(a.code), String(b.code)));
+    });
     setNewRow(emptyNewRow);
   }
 
@@ -109,75 +122,69 @@ export function CrudTable({
         onChange={(e) =>
           onChange(col.type === "number" ? Number(e.target.value) : e.target.value)
         }
-        className="h-9"
+        className="h-8 px-2 py-0 text-sm"
       />
     );
   }
 
+  const gridCols = {
+    gridTemplateColumns: `repeat(${columns.length}, minmax(0, 1fr)) auto`,
+  };
+
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       {error && (
         <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
       )}
 
-      <Card>
-        <CardBody className="space-y-2">
-          <p className="text-xs font-medium text-slate-500">Add new</p>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {columns
-              .filter((c) => c.key !== "active")
-              .map((col) => (
-                <div key={col.key}>
-                  <label className="mb-1 block text-[11px] text-slate-500">{col.label}</label>
-                  {renderField(col, newRow[col.key], (v) =>
-                    setNewRow((n) => ({ ...n, [col.key]: v })),
-                  )}
-                </div>
-              ))}
-          </div>
+      <Card className="p-2">
+        <div className="grid items-end gap-2" style={gridCols}>
+          {columns.map((col) => (
+            <div key={col.key}>
+              <label className="mb-0.5 block text-[11px] text-slate-500">
+                {col.key === "active" ? "Active" : `New ${col.label.toLowerCase()}`}
+              </label>
+              {renderField(col, newRow[col.key], (v) =>
+                setNewRow((n) => ({ ...n, [col.key]: v })),
+              )}
+            </div>
+          ))}
           <Button size="sm" onClick={handleAdd}>
             Add
           </Button>
-        </CardBody>
+        </div>
       </Card>
 
-      <div className="space-y-2">
+      <Card className="divide-y divide-slate-100">
+        <div
+          className="grid gap-2 bg-slate-50 px-2 py-1 text-[11px] font-medium text-slate-500"
+          style={gridCols}
+        >
+          {columns.map((col) => (
+            <span key={col.key}>{col.label}</span>
+          ))}
+          <span className="w-16" />
+        </div>
         {rows.map((row) => (
-          <Card key={row.id}>
-            <CardBody className="space-y-2">
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                {columns.map((col) => (
-                  <div key={col.key}>
-                    <label className="mb-1 block text-[11px] text-slate-500">
-                      {col.label}
-                    </label>
-                    {renderField(col, row[col.key], (v) =>
-                      handleUpdate(row.id, { [col.key]: v }),
-                    )}
-                  </div>
-                ))}
+          <div
+            key={row.id}
+            className="grid items-center gap-2 px-2 py-1"
+            style={gridCols}
+          >
+            {columns.map((col) => (
+              <div key={col.key}>
+                {renderField(col, row[col.key], (v) => handleUpdate(row.id, { [col.key]: v }))}
               </div>
-              <div className="flex items-center justify-between">
-                {"active" in row ? (
-                  <Badge tone={row.active ? "green" : "slate"}>
-                    {row.active ? "Active" : "Inactive"}
-                  </Badge>
-                ) : (
-                  <span />
-                )}
-                <div className="flex items-center gap-2">
-                  {savingId === row.id && (
-                    <span className="text-xs text-slate-400">Saving…</span>
-                  )}
-                  <Button variant="danger" size="sm" onClick={() => handleDelete(row.id)}>
-                    Delete
-                  </Button>
-                </div>
-              </div>
-            </CardBody>
-          </Card>
+            ))}
+            <div className="flex w-16 items-center justify-end gap-1">
+              {savingId === row.id && <span className="text-[10px] text-slate-400">…</span>}
+              <Button variant="danger" size="sm" onClick={() => handleDelete(row.id)}>
+                Del
+              </Button>
+            </div>
+          </div>
         ))}
-      </div>
+      </Card>
     </div>
   );
 }

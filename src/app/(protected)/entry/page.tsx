@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getBroughtForwardBalance, getOrCreateReport } from "@/lib/daily-report";
 import { getCurrentProfile } from "@/lib/auth";
-import { todayColombo } from "@/lib/utils";
+import { todayColombo, sortEmployees, sortSections } from "@/lib/utils";
 import { EntryForm } from "@/components/entry/entry-form";
 import { Card, CardBody } from "@/components/ui/card";
 import type { Attendance, JobLine } from "@/lib/supabase/types";
@@ -83,8 +83,8 @@ export default async function EntryPage() {
         status={report.status}
         readOnly={readOnly}
         isAdmin={isAdmin}
-        employees={employees ?? []}
-        sections={sections ?? []}
+        employees={sortEmployees(employees)}
+        sections={sortSections(sections)}
         workTypes={workTypes ?? []}
         timePresets={timePresets ?? []}
         initialAttendance={(attendance as (Attendance & { job_lines: JobLine[] })[]) ?? []}

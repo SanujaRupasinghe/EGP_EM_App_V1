@@ -1,3 +1,4 @@
+import { sortEmployees } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/server";
 import { CrudTable, type ColumnConfig } from "@/components/admin/crud-table";
 import { CsvImport } from "@/components/admin/csv-import";
@@ -38,10 +39,11 @@ export default async function EmployeesAdminPage() {
         templateFilename="employees_template.csv"
       />
       <CrudTable
-        key={(data ?? []).map((d) => d.id).join(",")}
+        key={sortEmployees(data).map((d) => d.id).join(",")}
         table="employees"
+        order="employee"
         columns={columns}
-        initialRows={data ?? []}
+        initialRows={sortEmployees(data)}
         emptyNewRow={{ code: "", name: "", gender: "F", active: true }}
       />
     </div>

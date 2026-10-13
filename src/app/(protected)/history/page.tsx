@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth";
-import { todayColombo } from "@/lib/utils";
+import { todayColombo, sortEmployees, sortSections } from "@/lib/utils";
 import { EntryForm } from "@/components/entry/entry-form";
 import { DatePickerNav } from "@/components/entry/date-picker-nav";
 import { getBroughtForwardBalance } from "@/lib/daily-report";
@@ -130,8 +130,8 @@ export default async function HistoryPage({
         status={report.status}
         readOnly={readOnly}
         isAdmin={isAdmin}
-        employees={employees ?? []}
-        sections={sections ?? []}
+        employees={sortEmployees(employees)}
+        sections={sortSections(sections)}
         workTypes={workTypes ?? []}
         timePresets={timePresets ?? []}
         initialAttendance={(attendance as (Attendance & { job_lines: JobLine[] })[]) ?? []}
