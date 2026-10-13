@@ -34,7 +34,7 @@ export default async function PayrollPage({
   const dates = eachDate(from, to);
 
   const supabase = await createClient();
-  const [{ data: payRows }, { data: adjustments }] = await Promise.all([
+  const [{ data: payRows, error: payError }, { data: adjustments }] = await Promise.all([
     supabase.from("v_attendance_pay").select("*").gte("report_date", from).lte("report_date", to),
     supabase
       .from("payroll_adjustments")
@@ -116,6 +116,11 @@ export default async function PayrollPage({
       </div>
       <PayrollRangeFilter from={from} to={to} />
       <p className="text-sm text-slate-600">Range: {periodLabel}</p>
+      {payError && (
+        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
+          Could not load payroll data: {payError.message}
+        </p>
+      )}
       <PayrollTable
         rows={rows}
         dates={dates}
