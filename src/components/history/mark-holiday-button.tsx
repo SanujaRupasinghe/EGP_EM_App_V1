@@ -27,7 +27,10 @@ export function MarkHolidayButton({
       if (!confirmed) return;
     }
 
-    const reason = window.prompt(`Mark ${reportDate} as a holiday. Reason (optional):`);
+    const reason = window.prompt(
+      `Mark ${reportDate} as a holiday. Reason (optional):`,
+      "Non-working day",
+    );
     if (reason === null) return;
 
     setError(null);

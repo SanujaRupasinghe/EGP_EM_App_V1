@@ -10,10 +10,10 @@ import { PayrollTable, type PayrollRow } from "@/components/payroll/payroll-tabl
 import { Button } from "@/components/ui/button";
 import type { AttendancePayRow, PayrollAdjustment } from "@/lib/supabase/types";
 
-// Allowance is auto-suggested (still editable per employee below) when
-// someone worked more than 80% of the calendar days in the selected range.
-const ALLOWANCE_ATTENDANCE_THRESHOLD = 0.8;
-const ALLOWANCE_AMOUNT = 1500;
+// Allowance: when someone worked at least 60% of the calendar days in the
+// selected range, they get 200 LKR for every day worked.
+const ALLOWANCE_ATTENDANCE_THRESHOLD = 0.6;
+const ALLOWANCE_PER_DAY = 200;
 
 export default async function PayrollPage({
   searchParams,
@@ -43,48 +43,50 @@ export default async function PayrollPage({
       .eq("period_end", to),
   ]);
 
-  const adjustmentByEmployee = new Map(
-    (adjustments as PayrollAdjustment[] | null)?.map((a) => [a.employee_id, a]),
+  const loanByEmployee = new Map(
+    (adjustments as PayrollAdjustment[] | null)?.map((a) => [a.employee_id, Number(a.loan)]),
   );
 
-  type GroupedRow = Omit<PayrollRow, "allowance" | "loan">;
+  type GroupedRow = Omit<PayrollRow, "allowance" | "loan" | "workedOn"> & {
+    fractions: Record<string, number>;
+  };
   const grouped = new Map<string, GroupedRow>();
   for (const r of (payRows as AttendancePayRow[] | null) ?? []) {
-    const pay = Number(r.final_pay);
+    const fraction = Number(r.day_fraction);
+    // Amount = rate × days worked (the rate in effect on each day).
+    const amount = Number(r.day_rate) * fraction;
     const existing = grouped.get(r.employee_id);
     if (existing) {
-      existing.days += Number(r.day_fraction);
-      existing.gross += pay;
+      existing.days += fraction;
+      existing.gross += amount;
+      existing.rate = Number(r.day_rate);
       existing.advances += Number(r.advance_amount);
-      existing.teaKg += Number(r.plucked_kg ?? 0);
-      existing.dailyPay[r.report_date] = (existing.dailyPay[r.report_date] ?? 0) + pay;
+      existing.fractions[r.report_date] = (existing.fractions[r.report_date] ?? 0) + fraction;
     } else {
       grouped.set(r.employee_id, {
         employeeId: r.employee_id,
         code: r.employee_code,
         name: r.employee_name,
-        days: Number(r.day_fraction),
+        days: fraction,
         rate: Number(r.day_rate),
-        gross: pay,
+        gross: amount,
         advances: Number(r.advance_amount),
-        teaKg: Number(r.plucked_kg ?? 0),
-        dailyPay: { [r.report_date]: pay },
+        fractions: { [r.report_date]: fraction },
       });
     }
   }
 
   const rows: PayrollRow[] = Array.from(grouped.values())
-    .map((g) => {
-      const adj = adjustmentByEmployee.get(g.employeeId);
-      const autoAllowance =
-        dates.length > 0 && g.days / dates.length > ALLOWANCE_ATTENDANCE_THRESHOLD
-          ? ALLOWANCE_AMOUNT
+    .map(({ fractions, ...g }) => {
+      const allowance =
+        dates.length > 0 && g.days / dates.length >= ALLOWANCE_ATTENDANCE_THRESHOLD
+          ? g.days * ALLOWANCE_PER_DAY
           : 0;
-      return {
-        ...g,
-        allowance: adj?.allowance ?? autoAllowance,
-        loan: adj?.loan ?? 0,
-      };
+      const workedOn = dates
+        .filter((d) => fractions[d])
+        .map((d) => `${Number(d.slice(8))}${fractions[d] < 1 ? "½" : ""}`)
+        .join(", ");
+      return { ...g, allowance, loan: loanByEmployee.get(g.employeeId) ?? 0, workedOn };
     })
     .sort((a, b) => compareEmployeeCodes(a.code, b.code));
 
@@ -114,7 +116,7 @@ export default async function PayrollPage({
           </Link>
         </div>
       </div>
-      <PayrollRangeFilter key={`${from}_${to}`} from={from} to={to} />
+      <PayrollRangeFilter key={`filter_${from}_${to}`} from={from} to={to} />
       <p className="text-sm text-slate-600">Range: {periodLabel}</p>
       {payError && (
         <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
@@ -122,9 +124,13 @@ export default async function PayrollPage({
         </p>
       )}
       <PayrollTable
-        key={`${from}_${to}`}
+        key={`table_${from}_${to}`}
         rows={rows}
-        dates={dates}
+        rangeLabel={
+          from.slice(0, 7) === to.slice(0, 7)
+            ? `${Number(from.slice(8))}–${Number(to.slice(8))}`
+            : periodLabel
+        }
         periodStart={from}
         periodEnd={to}
         monthLabel={monthLabel}

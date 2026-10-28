@@ -23,6 +23,10 @@ export default async function HistoryPage({
   const { date } = await searchParams;
   const reportDate = date && date <= today ? date : today;
   const isAdmin = session.profile?.role === "admin";
+  // office_v2 may back-fill past days that have no entry (create a report or
+  // mark a holiday); see supabase/migrations/0011_office_v2_role.sql.
+  const isOfficeV2 = session.profile?.role === "office_v2" && reportDate < today;
+  const canBackfill = isAdmin || isOfficeV2;
 
   const supabase = await createClient();
   const [{ data: report }, { data: holiday }] = await Promise.all([
@@ -52,7 +56,7 @@ export default async function HistoryPage({
         ) : (
           <div className="space-y-3">
             <p className="text-sm text-slate-500">No report was saved for this date.</p>
-            {isAdmin && (
+            {canBackfill && (
               <div className="flex flex-wrap gap-2">
                 <CreateReportButton reportDate={reportDate} />
                 <MarkHolidayButton reportDate={reportDate} />
@@ -95,7 +99,10 @@ export default async function HistoryPage({
   // History is a read-only record for office staff — only admins may amend a
   // saved report here. Today's not-yet-submitted report is still edited via
   // the dedicated Entry ("Today") page, not History.
-  const readOnly = !isAdmin;
+  // An office_v2 user may keep filling in a past report they created, until
+  // they submit it — after that only an admin can change it.
+  const readOnly =
+    !isAdmin && !(isOfficeV2 && report.status === "draft" && report.created_by === session.userId);
 
   return (
     <div className="space-y-4">
@@ -116,6 +123,9 @@ export default async function HistoryPage({
       )}
       {readOnly && (
         <p className="rounded-lg bg-slate-100 px-3 py-2 text-xs text-slate-600">
+          {isOfficeV2 && report.status === "finalized" && report.created_by === session.userId
+            ? "This report was submitted and is now locked. "
+            : null}
           History is read-only. Use{" "}
           <Link href="/entry" className="font-medium text-emerald-700 underline">
             Today

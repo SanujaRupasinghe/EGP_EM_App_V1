@@ -19,6 +19,7 @@ export function RoleForm({ userId, role }: { userId: string; role: Role }) {
       }}
     >
       <option value="office">Office</option>
+      <option value="office_v2">Office v2</option>
       <option value="admin">Admin</option>
     </Select>
   );

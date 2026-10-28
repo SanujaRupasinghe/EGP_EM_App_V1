@@ -11,7 +11,6 @@ type Row = {
   rate: number;
   gross: number;
   advances: number;
-  teaKg: number;
   allowance: number;
   loan: number;
   balance: number;
@@ -48,11 +47,10 @@ export function PayrollPdfButton({
         gross: acc.gross + r.gross,
         advances: acc.advances + r.advances,
         allowance: acc.allowance + r.allowance,
-        teaKg: acc.teaKg + r.teaKg,
         loan: acc.loan + r.loan,
         balance: acc.balance + r.balance,
       }),
-      { gross: 0, advances: 0, allowance: 0, teaKg: 0, loan: 0, balance: 0 },
+      { gross: 0, advances: 0, allowance: 0, loan: 0, balance: 0 },
     );
 
     const rowsHtml = rows
@@ -64,7 +62,7 @@ export function PayrollPdfButton({
           <td class="num">${formatLKR(r.rate)}</td>
           <td class="num">${formatLKR(r.gross)}</td>
           <td class="num">${formatLKR(r.allowance)}</td>
-          <td class="num">${r.teaKg > 0 ? r.teaKg.toFixed(1) : ""}</td>
+          <td class="num"></td>
           <td class="num">${formatLKR(r.gross + r.allowance)}</td>
           <td class="num">${formatLKR(r.loan)}</td>
           <td class="num">${formatLKR(r.advances)}</td>
@@ -118,7 +116,7 @@ export function PayrollPdfButton({
         <td colspan="4">Total</td>
         <td class="num">${formatLKR(totals.gross)}</td>
         <td class="num">${formatLKR(totals.allowance)}</td>
-        <td class="num">${totals.teaKg > 0 ? totals.teaKg.toFixed(1) : ""}</td>
+        <td class="num"></td>
         <td class="num">${formatLKR(totals.gross + totals.allowance)}</td>
         <td class="num">${formatLKR(totals.loan)}</td>
         <td class="num">${formatLKR(totals.advances)}</td>
